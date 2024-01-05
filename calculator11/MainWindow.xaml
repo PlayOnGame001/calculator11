@@ -1,0 +1,139 @@
+﻿<Window x:Class="calculator11.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:calculator11"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        Title="MainWindow" Height="420" Width="315">
+    
+    <Window.Resources>
+        <Style TargetType="local:MainWindow">
+            <Setter Property="Background" Value="#303030"/>
+        </Style>
+
+        <Style x:Key="btn_exit_style">
+            <Setter Property="Control.Width" Value="20"/>
+            <Setter Property="Control.Height" Value="20"/>
+            <Setter Property="Control.VerticalAlignment" Value="Top"/>
+            <Setter Property="Control.HorizontalAlignment" Value="Right"/>
+            <Setter Property="Control.Margin" Value="5"/>
+        </Style>
+
+        <Style x:Key="btn_backspace_style">
+            <Setter Property="Control.Width" Value="50"/>
+            <Setter Property="Control.Height" Value="20"/>
+            <Setter Property="Control.VerticalAlignment" Value="Top"/>
+            <Setter Property="Control.HorizontalAlignment" Value="Right"/>
+            <Setter Property="Control.Margin" Value="0,5,40,0"/>
+        </Style>
+
+        <Style x:Key="title_style">
+            <Setter Property="Control.Margin" Value="10,5"/>
+            <Setter Property="TextElement.Foreground" Value="#E5E2E3"/>
+            <Setter Property="Control.Width" Value="60"/>
+            <Setter Property="Control.Height" Value="20"/>
+            <Setter Property="Control.VerticalAlignment" Value="Top"/>
+            <Setter Property="Control.HorizontalAlignment" Value="Left"/>
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="Control.Width" Value="70"/>
+            <Setter Property="Control.Height" Value="60"/>
+            <Setter Property="Control.Margin" Value="1"/>
+            <Setter Property="Control.Background" Value="#7F7D7D"/>
+            <Setter Property="Control.FontSize" Value="24"/>
+        </Style>
+
+        <Style x:Key="btn_multiply_style">
+            <Setter Property="Control.Width" Value="70"/>
+            <Setter Property="Control.Height" Value="60"/>
+            <Setter Property="Control.Margin" Value="1"/>
+            <Setter Property="Control.Background" Value="#646161"/>
+            <Setter Property="Control.FontSize" Value="24"/>
+        </Style>
+
+        <Style TargetType="StackPanel" x:Key="stackpanel1_style">
+            <Setter Property="Grid.Row" Value="2"/>
+            <Setter Property="Orientation" Value="Horizontal"/>
+            <Setter Property="Control.HorizontalAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="StackPanel" x:Key="stackpanel2_style" BasedOn="{StaticResource stackpanel1_style}">
+            <Setter Property="Grid.Row" Value="3"/>
+        </Style>
+        <Style TargetType="StackPanel" x:Key="stackpanel3_style" BasedOn="{StaticResource stackpanel1_style}">
+            <Setter Property="Grid.Row" Value="4"/>
+        </Style>
+        <Style TargetType="StackPanel" x:Key="stackpanel4_style" BasedOn="{StaticResource stackpanel1_style}">
+            <Setter Property="Grid.Row" Value="5"/>
+        </Style>
+
+        <Style x:Key="txtbox_style">
+            <Setter Property="Control.Height" Value="80"/>
+            <Setter Property="Control.FontSize" Value="42"/>
+            <Setter Property="TextBlock.TextAlignment" Value="Right"/>
+            <Setter Property="Control.Background" Value="#303030"/>
+            <Setter Property="Control.BorderThickness" Value="0"/>
+            <Setter Property="Control.Foreground" Value="#ECE9EA"/>
+        </Style>
+
+        <Style x:Key="txtblock">
+            <Setter Property="Control.Height" Value="30"/>
+            <Setter Property="Control.Background" Value="#303030"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition MinHeight="120"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition MinHeight="30"/>
+        </Grid.RowDefinitions>
+
+        <Border Background="#232323" RenderTransformOrigin="0.5,0.5" Height="30" VerticalAlignment="Top" MouseLeftButtonDown="Border_MouseLeftButtonDown"/>
+        <Button x:Name="exit" Style="{StaticResource btn_exit_style}" Click="exit_Click">
+            <Image Source="exit.png"/>
+        </Button>
+        <Button x:Name="backspace" Style="{StaticResource btn_backspace_style}" Click="backspace_Click">
+            <Image Source="backspace.png"/>
+        </Button>
+        <TextBlock Text="Calculator" Style="{StaticResource title_style}"/>
+
+        <StackPanel Orientation="Vertical" Grid.Row="1">
+            <TextBlock Style="{StaticResource txtblock}"/>
+            <TextBox x:Name="textBox" Style="{StaticResource txtbox_style}"/>
+        </StackPanel>
+
+        <StackPanel Style="{StaticResource stackpanel1_style}">
+            <Button Content="7" Click="Button_Click"/>
+            <Button Content="8" Click="Button_Click"/>
+            <Button Content="9" Click="Button_Click"/>
+            <Button Content="/" Click="Button_Click_1"  Style="{StaticResource btn_multiply_style}"/>
+        </StackPanel>
+        <StackPanel Style="{StaticResource stackpanel2_style}">
+            <Button Content="4" Click="Button_Click"/>
+            <Button Content="5" Click="Button_Click"/>
+            <Button Content="6" Click="Button_Click"/>
+            <Button Content="*" Click="Button_Click_2"  Style="{StaticResource btn_multiply_style}"/>
+        </StackPanel>
+        <StackPanel Style="{StaticResource stackpanel3_style}">
+            <Button Content="1" Click="Button_Click"/>
+            <Button Content="2" Click="Button_Click"/>
+            <Button Content="3" Click="Button_Click"/>
+            <Button Content="-" Click="Button_Click_3" Style="{StaticResource btn_multiply_style}"/>
+        </StackPanel>
+        <StackPanel Style="{StaticResource stackpanel4_style}">
+            <Button Content="," Click="Button_Click"/>
+            <Button Content="0" Click="Button_Click"/>
+            <Button Content="=" Click="Button_Click_5" Background="#ACAAAA"/>
+            <Button Content="+" Click="Button_Click_4" Style="{StaticResource btn_multiply_style}"/>
+        </StackPanel>
+    </Grid>
+
+</Window>
